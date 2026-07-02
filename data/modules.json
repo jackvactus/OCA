@@ -1,0 +1,612 @@
+{
+  "modules": [
+    {
+      "id": 1,
+      "title": "Fondamentaux du SQL Oracle",
+      "summary": "Introduction au langage SQL, types de commandes, SELECT, DUAL et types de donn?es Oracle.",
+      "objectives": [
+        "Comprendre le r?le du SQL dans les bases de donn?es relationnelles",
+        "Identifier les cat?gories DML, DDL, DCL et TCL",
+        "Utiliser SELECT et la table DUAL pour des calculs simples"
+      ],
+      "sections": [
+        {
+          "title": "Introduction au langage SQL",
+          "content": "SQL (Structured Query Language) est le langage standard pour interagir avec une base de donn?es relationnelle. Il permet de d?finir la structure, de manipuler les donn?es, de contr?ler les acc?s et de g?rer les transactions.",
+          "code": "-- Types de commandes SQL\n-- DML : SELECT, INSERT, UPDATE, DELETE\n-- DDL : CREATE, ALTER, DROP, RENAME, TRUNCATE\n-- DCL : GRANT, REVOKE\n-- TCL : COMMIT, ROLLBACK, SAVEPOINT",
+          "result": "-- R?sultat conceptuel : compr?hension des 4 familles de commandes SQL",
+          "pitfalls": [
+            "Confondre DDL et DML : TRUNCATE est DDL, DELETE est DML",
+            "Penser que SELECT ne modifie jamais les donn?es"
+          ]
+        },
+        {
+          "title": "La commande SELECT basique",
+          "content": "SELECT est la commande la plus utilis?e en SQL. Elle permet de r?cup?rer des colonnes depuis une ou plusieurs tables, avec des conditions, des tris et des alias.",
+          "code": "-- S?lectionner toutes les colonnes\nSELECT * FROM employ?s;\n\n-- S?lectionner des colonnes sp?cifiques\nSELECT id, nom, pr?nom FROM employ?s;\n\n-- Alias de colonnes\nSELECT nom AS \"Nom de famille\", pr?nom AS \"Pr?nom\" FROM employ?s;\n\n-- Calculs dans SELECT\nSELECT nom, salaire, salaire * 12 AS \"Salaire Annuel\" FROM employ?s;",
+          "result": "-- R?sultat : liste de colonnes et expression calcul?e par ligne",
+          "pitfalls": [
+            "Utiliser un alias dans WHERE n'est pas autoris? dans la plupart des cas",
+            "SELECT * doit ?tre ?vit? en production"
+          ]
+        },
+        {
+          "title": "La table DUAL",
+          "content": "DUAL est une table sp?ciale Oracle contenant une seule ligne et une seule colonne. Elle est utilis?e pour ex?cuter des expressions et des fonctions sans acc?der ? une table de donn?es.",
+          "code": "SELECT 2 + 3 FROM DUAL;\nSELECT SYSDATE FROM DUAL;\nSELECT USER FROM DUAL;",
+          "result": "5\nCurrent date\nCurrent username",
+          "pitfalls": [
+            "Oublier FROM DUAL lors de l'?valuation d'expressions dans Oracle",
+            "Penser que DUAL est une table utilisable comme une table de donn?es"
+          ]
+        },
+        {
+          "title": "Les types de donn?es Oracle",
+          "content": "Oracle propose des types num?riques, caract?res et date/heure. NUMBER g?re la pr?cision et l'?chelle. VARCHAR2 est la cha?ne variable la plus utilis?e.",
+          "code": "-- Types num?riques\nCREATE TABLE demo_num (montant NUMBER(7,2), quantite INTEGER, taux FLOAT);\n\n-- Types caract?res\nCREATE TABLE demo_txt (nom VARCHAR2(100), code CHAR(5), description CLOB);\n\n-- Types date/heure\nCREATE TABLE demo_date (date_event DATE, date_heure TIMESTAMP);",
+          "result": "Table definitions created.",
+          "pitfalls": [
+            "CHAR utilise des espaces de remplissage, VARCHAR2 non",
+            "DATE stocke heure et minute jusqu'? la seconde en Oracle"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Fonctions scalaires et conversions",
+      "summary": "Manipulation des donn?es avec fonctions num?riques, cha?nes, dates et conversions explicites.",
+      "objectives": [
+        "Utiliser les fonctions num?riques, cha?nes et date en Oracle",
+        "Convertir les donn?es avec TO_CHAR, TO_DATE et TO_NUMBER",
+        "G?rer les valeurs NULL avec NVL, NVL2 et COALESCE"
+      ],
+      "sections": [
+        {
+          "title": "Fonctions num?riques",
+          "content": "Les fonctions num?riques permettent d'arrondir, tronquer, calculer des puissances et des valeurs absolues.",
+          "code": "SELECT ROUND(45.926, 2) AS arrondi, TRUNC(45.926, 2) AS troncature, MOD(10, 3) AS modulo, CEIL(45.2) AS plafond, FLOOR(45.9) AS plancher, ABS(-15) AS valeur_absolue, POWER(2, 3) AS puissance FROM DUAL;",
+          "result": "45.93\n45.92\n1\n46\n45\n15\n8",
+          "pitfalls": [
+            "ROUND et TRUNC ne se comportent pas de la m?me mani?re pour les d?cimales",
+            "MOD retourne le reste et non la division enti?re"
+          ]
+        },
+        {
+          "title": "Fonctions caract?res",
+          "content": "Oracle propose de nombreuses fonctions pour manipuler les cha?nes : conversion de casse, concat?nation, extraction, longueur, recherche et remplacement.",
+          "code": "SELECT UPPER('oracle') AS majuscule, LOWER('ORACLE') AS minuscule, INITCAP('john doe') AS initiales, CONCAT('Hello ', 'World') AS concat, 'Hello ' || 'World' AS operateur, SUBSTR('Oracle Database', 8, 8) AS sous_chaine, LENGTH('Oracle') AS longueur, INSTR('Oracle', 'a') AS position, LPAD('5', 3, '0') AS pad_gauche, RPAD('5', 3, '0') AS pad_droit, TRIM('  Hello  ') AS trim, REPLACE('Hello World', 'World', 'Oracle') AS remplacement FROM DUAL;",
+          "result": "ORACLE\noracle\nJohn Doe\nHello World\nHello World\nDatabase\n6\n3\n005\n500\nHello\nHello Oracle",
+          "pitfalls": [
+            "CONCAT prend seulement deux arguments en Oracle",
+            "L'op?rateur || est recommand? pour concat?ner plusieurs cha?nes"
+          ]
+        },
+        {
+          "title": "Fonctions de date",
+          "content": "Oracle stocke les dates avec pr?cision ? la seconde. Les fonctions de date permettent de calculer des intervalles, de tronquer et d'extraire des composants.",
+          "code": "SELECT SYSDATE AS date_actuelle, CURRENT_DATE AS date_session, ADD_MONTHS(SYSDATE, 3) AS plus_3_mois, MONTHS_BETWEEN(TO_DATE('15-DEC-2024','DD-MON-YYYY'), TO_DATE('15-JAN-2024','DD-MON-YYYY')) AS mois_entre_dates, LAST_DAY(SYSDATE) AS dernier_jour_mois, NEXT_DAY(SYSDATE, 'MONDAY') AS prochain_lundi, ROUND(SYSDATE, 'MM') AS arrondi_mois, TRUNC(SYSDATE, 'YYYY') AS troncature_annee, EXTRACT(YEAR FROM SYSDATE) AS annee, EXTRACT(MONTH FROM SYSDATE) AS mois FROM DUAL;",
+          "result": "Dates et composants extraits correctement",
+          "pitfalls": [
+            "TO_DATE n?cessite le format exact de la cha?ne",
+            "ROUND(SYSDATE,'MM') et TRUNC(SYSDATE,'MM') ne donnent pas le m?me r?sultat"
+          ]
+        },
+        {
+          "title": "Fonctions de conversion et NULL",
+          "content": "Les conversions explicites sont essentielles en Oracle pour ?viter les comportements implicites ind?sirables. NVL, NVL2, COALESCE et NULLIF permettent de contr?ler les NULL.",
+          "code": "SELECT TO_CHAR(1234.56, '999,999.99') AS standard, TO_CHAR(1234.56, '000000.000') AS zeros, TO_CHAR(SYSDATE, 'DD/MM/YYYY') AS date_fr, TO_CHAR(SYSDATE, 'HH24:MI:SS') AS heure_24 FROM DUAL;\nSELECT TO_NUMBER('1,234.56', '9,999.99') AS nombre FROM DUAL;\nSELECT TO_DATE('25/12/2024', 'DD/MM/YYYY') AS date1, TO_DATE('2024-12-25 14:30', 'YYYY-MM-DD HH24:MI') AS date2 FROM DUAL;\nSELECT NVL(commission_pct, 0) AS commission, NVL2(commission_pct, salary + (salary * commission_pct), salary) AS total, COALESCE(phone_number, email, 'No Contact') AS contact, NULLIF(10, 10) AS nullif_result FROM employees WHERE ROWNUM = 1;",
+          "result": "Conversions correctes et gestion des NULL",
+          "pitfalls": [
+            "Ne pas utiliser '=' pour comparer ? NULL",
+            "TO_NUMBER ?choue si la cha?ne ne respecte pas le format"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Filtrage et tri des donn?es",
+      "summary": "Appliquer des conditions, rechercher avec LIKE, trier avec ORDER BY et g?rer les NULL.",
+      "objectives": [
+        "Ma?triser WHERE, BETWEEN, IN et LIKE",
+        "Appliquer ORDER BY et NULLS FIRST/LAST",
+        "Comprendre la logique des NULL dans les filtres"
+      ],
+      "sections": [
+        {
+          "title": "Clause WHERE et op?rateurs logiques",
+          "content": "WHERE filtre les lignes avant toute projection ou agr?gation. Les op?rateurs AND, OR et NOT permettent de combiner les conditions.",
+          "code": "SELECT * FROM employees WHERE salary > 5000 AND department_id = 50;\nSELECT * FROM employees WHERE department_id = 50 OR department_id = 80;\nSELECT * FROM employees WHERE NOT (department_id = 90);",
+          "result": "R?sultats filtr?s selon les conditions",
+          "pitfalls": [
+            "Ne pas oublier les parenth?ses pour contr?ler les priorit?s",
+            "AND a priorit? sur OR"
+          ]
+        },
+        {
+          "title": "LIKE, BETWEEN et IN",
+          "content": "LIKE recherche des motifs avec % et _. BETWEEN est inclusif. IN compare une colonne ? une liste de valeurs.",
+          "code": "SELECT * FROM employees WHERE last_name LIKE 'S%';\nSELECT * FROM employees WHERE salary BETWEEN 3000 AND 8000;\nSELECT * FROM employees WHERE department_id IN (50, 80, 100);",
+          "result": "Lignes correspondant aux filtres sp?cifi?s",
+          "pitfalls": [
+            "LIKE est sensible ? la casse selon le r?glage NLS_SORT",
+            "NOT IN peut ?chouer si la liste contient NULL"
+          ]
+        },
+        {
+          "title": "Tri avec ORDER BY",
+          "content": "ORDER BY trie le r?sultat final. On peut trier sur plusieurs colonnes et contr?ler le placement des NULL.",
+          "code": "SELECT first_name, last_name, salary FROM employees ORDER BY salary DESC;\nSELECT department_id, last_name, salary FROM employees ORDER BY department_id ASC, salary DESC, last_name;\nSELECT first_name, last_name, salary FROM employees ORDER BY salary DESC NULLS LAST;",
+          "result": "R?sultats tri?s dans l'ordre souhait?",
+          "pitfalls": [
+            "ROWNUM est appliqu? avant ORDER BY si utilis? directement",
+            "ORDER BY par position de colonne est d?conseill?"
+          ]
+        },
+        {
+          "title": "Gestion des valeurs NULL",
+          "content": "Les NULL repr?sentent l'absence de valeur. Les comparaisons directes donnent UNKNOWN. Il faut utiliser IS NULL et IS NOT NULL.",
+          "code": "SELECT * FROM employees WHERE commission_pct IS NULL;\nSELECT * FROM employees WHERE commission_pct IS NOT NULL;\nSELECT COUNT(*) AS total, COUNT(commission_pct) AS avec_comm FROM employees;",
+          "result": "NULL trait?s correctement et compt?s diff?remment",
+          "pitfalls": [
+            "WHERE commission_pct = NULL ne marche pas",
+            "COUNT(colonne) ignore les NULL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Agr?gation et groupement",
+      "summary": "Calcul de valeurs agr?g?es, regroupement de r?sultats et filtrage de groupes.",
+      "objectives": [
+        "Appliquer COUNT, SUM, AVG, MIN et MAX",
+        "Utiliser GROUP BY et HAVING correctement",
+        "Comparer WHERE et HAVING"
+      ],
+      "sections": [
+        {
+          "title": "Fonctions d'agr?gation",
+          "content": "Les fonctions d'agr?gation r?sument des ensembles de lignes en une seule valeur. COUNT(*) compte toutes les lignes, COUNT(col) ignore les NULL.",
+          "code": "SELECT COUNT(*) AS total_employes, COUNT(commission_pct) AS avec_comm, COUNT(DISTINCT department_id) AS departements, SUM(salary) AS total_salaires, AVG(salary) AS salaire_moyen, MAX(salary) AS salaire_max, MIN(salary) AS salaire_min FROM employees;",
+          "result": "Statistiques globales sur les employ?s",
+          "pitfalls": [
+            "COUNT(DISTINCT col) compte uniquement les valeurs uniques",
+            "AVG ignore les valeurs NULL"
+          ]
+        },
+        {
+          "title": "GROUP BY",
+          "content": "GROUP BY regroupe les lignes selon une ou plusieurs colonnes. Toute colonne affich?e hors fonction d'agr?gation doit ?tre dans GROUP BY.",
+          "code": "SELECT department_id, COUNT(*) AS effectif, AVG(salary) AS salaire_moyen FROM employees GROUP BY department_id ORDER BY department_id;",
+          "result": "R?capitulatif par d?partement",
+          "pitfalls": [
+            "Inclure toutes les colonnes non agr?g?es dans GROUP BY",
+            "Pas d'alias dans GROUP BY sauf dans certaines versions Oracle"
+          ]
+        },
+        {
+          "title": "HAVING",
+          "content": "HAVING filtre les groupes apr?s agr?gation. Il peut utiliser des fonctions d'agr?gation dans ses conditions.",
+          "code": "SELECT department_id, AVG(salary) AS salaire_moyen FROM employees GROUP BY department_id HAVING AVG(salary) > 5000;",
+          "result": "D?partements dont le salaire moyen d?passe 5000",
+          "pitfalls": [
+            "WHERE ne peut pas filtrer sur des r?sultats agr?g?s",
+            "HAVING sans GROUP BY traite la table comme un groupe unique"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Jointures et relations entre tables",
+      "summary": "Combiner des tables avec INNER, OUTER, SELF et NATURAL JOIN, et g?rer les correspondances manquantes.",
+      "objectives": [
+        "Comprendre les types de jointures Oracle et ANSI",
+        "Utiliser LEFT, RIGHT et FULL JOIN",
+        "Ma?triser les jointures SELF et NATURAL"
+      ],
+      "sections": [
+        {
+          "title": "INNER JOIN",
+          "content": "INNER JOIN retourne uniquement les lignes correspondant dans les deux tables. L'ancienne syntaxe Oracle se base sur la clause WHERE.",
+          "code": "SELECT e.first_name, e.last_name, d.department_name FROM employees e INNER JOIN departments d ON e.department_id = d.department_id;",
+          "result": "Employ?s avec leur d?partement",
+          "pitfalls": [
+            "Oublier la condition de jointure = produit cart?sien",
+            "Ne pas confondre INNER JOIN avec CROSS JOIN"
+          ]
+        },
+        {
+          "title": "LEFT, RIGHT et FULL OUTER JOIN",
+          "content": "LEFT JOIN conserve toutes les lignes de la table de gauche. RIGHT JOIN conserve celles de la droite. FULL JOIN conserve toutes les lignes des deux tables.",
+          "code": "SELECT e.last_name, d.department_name FROM employees e LEFT JOIN departments d ON e.department_id = d.department_id;\nSELECT e.last_name, d.department_name FROM employees e RIGHT JOIN departments d ON e.department_id = d.department_id;\nSELECT e.last_name, d.department_name FROM employees e FULL JOIN departments d ON e.department_id = d.department_id;",
+          "result": "R?sultats incomplets et complets selon le type de jointure",
+          "pitfalls": [
+            "LEFT JOIN et RIGHT JOIN ne sont pas interchangeables sans inverser les tables",
+            "FULL JOIN peut produire des NULLs sur les deux c?t?s"
+          ]
+        },
+        {
+          "title": "SELF JOIN et NATURAL JOIN",
+          "content": "SELF JOIN joint une table ? elle-m?me avec des alias. NATURAL JOIN utilise automatiquement toutes les colonnes de m?me nom.",
+          "code": "SELECT e.last_name AS employe, m.last_name AS manager FROM employees e LEFT JOIN employees m ON e.manager_id = m.employee_id;\nSELECT last_name, department_name FROM employees NATURAL JOIN departments;",
+          "result": "Jointures sur la m?me table et jointure automatique",
+          "pitfalls": [
+            "NATURAL JOIN peut joindre sur des colonnes non d?sir?es",
+            "Alias obligatoire pour SELF JOIN"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Sous-requ?tes et op?rateurs emsemblistes",
+      "summary": "Ma?triser les sous-requ?tes, EXISTS, ANY/ALL et les op?rateurs UNION, INTERSECT, MINUS.",
+      "objectives": [
+        "?crire des sous-requ?tes scalaires et corr?l?es",
+        "Utiliser EXISTS et NOT EXISTS efficacement",
+        "Combiner des requ?tes avec UNION, INTERSECT et MINUS"
+      ],
+      "sections": [
+        {
+          "title": "Sous-requ?tes simples et corr?l?es",
+          "content": "Une sous-requ?te peut ?tre utilis?e dans WHERE, FROM ou SELECT. Une sous-requ?te corr?l?e r?f?rence la requ?te externe.",
+          "code": "SELECT last_name, salary FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);\nSELECT last_name, salary, department_id FROM employees e1 WHERE salary > (SELECT AVG(salary) FROM employees e2 WHERE e2.department_id = e1.department_id);",
+          "result": "Employ?s gagnant plus que la moyenne globale et d?partementale",
+          "pitfalls": [
+            "Une sous-requ?te scalaire doit retourner une seule ligne",
+            "Les sous-requ?tes corr?l?es peuvent ?tre co?teuses"
+          ]
+        },
+        {
+          "title": "EXISTS, ANY et ALL",
+          "content": "EXISTS teste l'existence d'une ligne. ANY et ALL comparent une valeur ? un ensemble retourn?.",
+          "code": "SELECT last_name FROM employees e WHERE EXISTS (SELECT 1 FROM employees s WHERE s.manager_id = e.employee_id);\nSELECT last_name FROM employees WHERE salary > ALL (SELECT salary FROM employees WHERE department_id = 80);\nSELECT last_name FROM employees WHERE salary > ANY (SELECT salary FROM employees WHERE department_id = 80);",
+          "result": "Employ?s avec subordonn?s et comparaisons de salaires",
+          "pitfalls": [
+            "NOT IN peut donner des r?sultats inattendus avec NULL",
+            "EXISTS ne d?pend pas des colonnes s?lectionn?es dans la sous-requ?te"
+          ]
+        },
+        {
+          "title": "Op?rateurs emsemblistes",
+          "content": "UNION combine des r?sultats en supprimant les doublons. UNION ALL conserve les doublons. INTERSECT retourne l'intersection. MINUS retourne la diff?rence.",
+          "code": "SELECT employee_id, last_name FROM employees WHERE department_id = 50 UNION ALL SELECT employee_id, last_name FROM employees WHERE department_id = 80;\nSELECT employee_id FROM employees INTERSECT SELECT employee_id FROM job_history;\nSELECT employee_id FROM employees MINUS SELECT employee_id FROM job_history;",
+          "result": "Combinaisons et intersections de jeux de r?sultats",
+          "pitfalls": [
+            "Toutes les requ?tes doivent avoir le m?me nombre de colonnes",
+            "ORDER BY ne peut ?tre utilis? que dans la derni?re requ?te"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Manipulation des donn?es (DML)",
+      "summary": "INSERT, UPDATE, DELETE, MERGE, et verrouillage avec FOR UPDATE.",
+      "objectives": [
+        "Ins?rer, modifier et supprimer des enregistrements",
+        "Utiliser MERGE pour l'upsert",
+        "Comprendre le verrouillage en lecture avec FOR UPDATE"
+      ],
+      "sections": [
+        {
+          "title": "INSERT et UPDATE",
+          "content": "INSERT ajoute des lignes. UPDATE modifie les lignes existantes. Les deux op?rations peuvent ?tre combin?es ? des sous-requ?tes.",
+          "code": "INSERT INTO employees (employee_id, first_name, last_name, email, hire_date, job_id, salary) VALUES (207, 'Jean', 'DUPONT', 'JDUPONT', SYSDATE, 'IT_PROG', 6000);\nUPDATE employees SET salary = salary * 1.10 WHERE department_id = 50;",
+          "result": "1 row inserted. N rows updated.",
+          "pitfalls": [
+            "UPDATE sans WHERE met ? jour toutes les lignes",
+            "Les triggers peuvent modifier le comportement des DML"
+          ]
+        },
+        {
+          "title": "DELETE et MERGE",
+          "content": "DELETE supprime des lignes cibl?es. MERGE permet d'ins?rer ou de mettre ? jour en fonction d'une correspondance.",
+          "code": "DELETE FROM employees WHERE department_id = 10;\nMERGE INTO employees e USING employees_temp t ON (e.employee_id = t.employee_id) WHEN MATCHED THEN UPDATE SET e.salary = t.salary WHEN NOT MATCHED THEN INSERT (employee_id, first_name, last_name, email, hire_date, job_id, salary) VALUES (t.employee_id, t.first_name, t.last_name, t.email, SYSDATE, t.job_id, t.salary);",
+          "result": "Delete completed. Merge completed.",
+          "pitfalls": [
+            "DELETE sans WHERE est destructeur",
+            "MERGE n?cessite une condition ON pr?cise"
+          ]
+        },
+        {
+          "title": "FOR UPDATE",
+          "content": "SELECT ... FOR UPDATE verrouille les lignes s?lectionn?es afin de garantir l'exclusivit? lors d'une modification ult?rieure.",
+          "code": "SELECT employee_id, salary FROM employees WHERE department_id = 80 FOR UPDATE NOWAIT;",
+          "result": "Lignes verrouill?es pour ?dition",
+          "pitfalls": [
+            "NOWAIT provoque une erreur si la ligne est d?j? verrouill?e",
+            "FOR UPDATE doit ?tre utilis? avec prudence pour ?viter les blocages"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "D?finition des structures (DDL)",
+      "summary": "Cr?er, modifier, supprimer des tables, g?rer les contraintes et comprendre TRUNCATE et FLASHBACK.",
+      "objectives": [
+        "Cr?er des tables et des contraintes",
+        "Modifier la structure des tables",
+        "Savoir quand utiliser TRUNCATE ou DROP"
+      ],
+      "sections": [
+        {
+          "title": "CREATE TABLE et contraintes",
+          "content": "CREATE TABLE d?finit une structure de donn?es. Les contraintes assurent l'int?grit? : PRIMARY KEY, FOREIGN KEY, NOT NULL, UNIQUE, CHECK.",
+          "code": "CREATE TABLE employes (employee_id NUMBER(6) PRIMARY KEY, first_name VARCHAR2(20), last_name VARCHAR2(25) NOT NULL, email VARCHAR2(25) UNIQUE, hire_date DATE DEFAULT SYSDATE, job_id VARCHAR2(10), salary NUMBER(8,2) CHECK (salary > 0), department_id NUMBER(4), CONSTRAINT fk_dept FOREIGN KEY (department_id) REFERENCES departments(department_id));",
+          "result": "Table employes created.",
+          "pitfalls": [
+            "Une FOREIGN KEY requiert une cl? primaire ou unique dans la table de r?f?rence",
+            "CHECK s'applique ligne par ligne"
+          ]
+        },
+        {
+          "title": "ALTER TABLE et DROP TABLE",
+          "content": "ALTER TABLE permet d'ajouter, modifier ou supprimer des colonnes et contraintes. DROP TABLE supprime la table et ses donn?es.",
+          "code": "ALTER TABLE employes ADD (phone_number VARCHAR2(20));\nALTER TABLE employes MODIFY (last_name VARCHAR2(50));\nALTER TABLE employes DROP COLUMN phone_number;\nALTER TABLE employes RENAME COLUMN salary TO salaire;\nALTER TABLE employes ADD CONSTRAINT uk_email UNIQUE (email);\nALTER TABLE employes DROP CONSTRAINT uk_email;\nDROP TABLE employes PURGE;",
+          "result": "Table altered and dropped.",
+          "pitfalls": [
+            "DROP TABLE PURGE contourne la corbeille",
+            "Modifier une colonne peut ?chouer si les donn?es existantes ne correspondent pas"
+          ]
+        },
+        {
+          "title": "TRUNCATE et FLASHBACK",
+          "content": "TRUNCATE supprime toutes les lignes rapidement et commit implicitement. FLASHBACK TABLE restaure une table avant suppression si la corbeille est activ?e.",
+          "code": "TRUNCATE TABLE employes;\n-- FLASHBACK TABLE employes TO BEFORE DROP;",
+          "result": "Table truncated.",
+          "pitfalls": [
+            "TRUNCATE ne peut pas ?tre rollback?",
+            "FLASHBACK d?pend de l'UNDO et de la configuration de la base"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Vues, s?quences, index et synonymes",
+      "summary": "Objets Oracle pour simplifier les requ?tes, g?n?rer des cl?s et am?liorer les performances.",
+      "objectives": [
+        "Cr?er et utiliser des vues",
+        "D?finir des s?quences pour l'auto-incr?mentation",
+        "Comprendre les index et synonymes"
+      ],
+      "sections": [
+        {
+          "title": "Vues",
+          "content": "Une vue est une requ?te stock?e qui se comporte comme une table. Elle peut ?tre simple ou complexe et peut ?tre rendue en lecture seule.",
+          "code": "CREATE OR REPLACE VIEW v_employes_dept AS SELECT e.employee_id, e.first_name, e.last_name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;\nCREATE OR REPLACE VIEW v_employes_well_paid AS SELECT employee_id, last_name, salary FROM employees WHERE salary > 5000 WITH CHECK OPTION;",
+          "result": "View created.",
+          "pitfalls": [
+            "Toutes les vues ne sont pas modifiables",
+            "WITH CHECK OPTION emp?che les insertions/modifications hors crit?res"
+          ]
+        },
+        {
+          "title": "S?quences",
+          "content": "Les s?quences g?n?rent des valeurs num?riques uniques, utiles pour les cl?s primaires.",
+          "code": "CREATE SEQUENCE seq_employes START WITH 1 INCREMENT BY 1 MINVALUE 1 MAXVALUE 999999 CACHE 20 NOCYCLE ORDER;\nINSERT INTO employees (employee_id, last_name) VALUES (seq_employes.NEXTVAL, 'DUPONT');\nSELECT seq_employes.CURRVAL FROM DUAL;",
+          "result": "Sequence values generated.",
+          "pitfalls": [
+            "CURRVAL est invalide avant le premier NEXTVAL dans une session",
+            "Des gaps sont normaux avec les caches"
+          ]
+        },
+        {
+          "title": "Index et synonymes",
+          "content": "Les index acc?l?rent l'acc?s aux donn?es. Les synonymes cr?ent un alias pour un objet, simplifiant l'acc?s et l'abstraction.",
+          "code": "CREATE INDEX idx_employes_last_name ON employees(last_name);\nCREATE UNIQUE INDEX idx_employes_email ON employees(email);\nCREATE SYNONYM emp FOR employees;\nSELECT * FROM emp;",
+          "result": "Index and synonym created.",
+          "pitfalls": [
+            "Trop d'index ralentit les op?rations DML",
+            "CREATE PUBLIC SYNONYM n?cessite un privil?ge sp?cifique"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Dictionnaire de donn?es Oracle",
+      "summary": "Explorer les m?tadonn?es avec USER_*, ALL_* et DBA_*.",
+      "objectives": [
+        "Interroger les vues du dictionnaire de donn?es",
+        "Diff?rencier USER, ALL et DBA prefixes",
+        "Trouver les contraintes, colonnes et index"
+      ],
+      "sections": [
+        {
+          "title": "Pr?fixes USER_*, ALL_* et DBA_*",
+          "content": "USER_* liste les objets de l'utilisateur courant. ALL_* liste les objets accessibles. DBA_* liste tous les objets de la base (n?cessite privil?ges DBA).",
+          "code": "SELECT table_name FROM user_tables;\nSELECT table_name FROM all_tables WHERE owner = 'HR';\nSELECT table_name FROM dba_tables WHERE owner = 'HR';",
+          "result": "Listes des tables selon le contexte utilisateur.",
+          "pitfalls": [
+            "USER_* n'affiche pas les objets appartenant ? d'autres sch?mas",
+            "DBA_* n?cessite des privil?ges ?lev?s"
+          ]
+        },
+        {
+          "title": "Contraintes, colonnes et index",
+          "content": "USER_CONSTRAINTS et USER_CONS_COLUMNS d?crivent les contraintes. USER_TAB_COLUMNS d?crit les colonnes. USER_INDEXES et USER_IND_COLUMNS d?crivent les index.",
+          "code": "SELECT constraint_name, constraint_type, table_name FROM user_constraints WHERE table_name = 'EMPLOYEES';\nSELECT column_name, data_type, nullable FROM user_tab_columns WHERE table_name = 'EMPLOYEES';\nSELECT index_name, uniqueness FROM user_indexes WHERE table_name = 'EMPLOYEES';",
+          "result": "Informations m?tadonn?es sur la table EMPLOYEES.",
+          "pitfalls": [
+            "Les noms de table sont en majuscules sans guillemets",
+            "Constraint_type C repr?sente CHECK ou NOT NULL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "S?curit?, utilisateurs et r?les",
+      "summary": "G?rer les utilisateurs, privil?ges syst?me et privil?ges sur objets avec GRANT et REVOKE.",
+      "objectives": [
+        "Cr?er et administrer des utilisateurs Oracle",
+        "Accorder et r?voquer des privil?ges",
+        "Utiliser les r?les pour simplifier la s?curit?"
+      ],
+      "sections": [
+        {
+          "title": "Gestion des utilisateurs",
+          "content": "CREATE USER cr?e un compte Oracle. ALTER USER modifie le mot de passe ou les quotas. DROP USER supprime un utilisateur et, avec CASCADE, ses objets.",
+          "code": "CREATE USER alice IDENTIFIED BY \"Mot2Passe123\";\nALTER USER alice IDENTIFIED BY \"NouveauMot2Passe\";\nALTER USER alice QUOTA 100M ON users;\nDROP USER alice CASCADE;",
+          "result": "User created, modified and dropped.",
+          "pitfalls": [
+            "DROP USER CASCADE supprime aussi les objets du sch?ma",
+            "Les quotas sont n?cessaires pour cr?er des objets"
+          ]
+        },
+        {
+          "title": "Privil?ges syst?me et objet",
+          "content": "Les privil?ges syst?me autorisent des actions globales. Les privil?ges objet concernent des tables, vues ou autres objets sp?cifiques.",
+          "code": "GRANT CREATE SESSION TO alice;\nGRANT CREATE TABLE TO alice;\nGRANT SELECT ON employees TO alice;\nGRANT INSERT, UPDATE, DELETE ON employees TO alice;\nREVOKE DELETE ON employees FROM alice;",
+          "result": "Privil?ges accord?s et r?voqu?s.",
+          "pitfalls": [
+            "WITH GRANT OPTION permet la red?l?gation des privil?ges",
+            "REVOKE peut ?chouer si le privil?ge n'existe pas"
+          ]
+        },
+        {
+          "title": "R?les",
+          "content": "Un r?le est un groupe de privil?ges. Il simplifie l'administration en attribuant des ensembles de privil?ges aux utilisateurs.",
+          "code": "CREATE ROLE lecteur;\nCREATE ROLE editeur;\nGRANT SELECT ANY TABLE TO lecteur;\nGRANT SELECT, INSERT, UPDATE ON employees TO editeur;\nGRANT lecteur TO alice;\nGRANT editeur TO bob;\nREVOKE editeur FROM bob;",
+          "result": "Roles created and granted.",
+          "pitfalls": [
+            "Un r?le sans CREATE SESSION ne permet pas la connexion",
+            "Les r?les h?ritent des privil?ges mais pas des quotas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Fonctions avanc?es et Date/Heure",
+      "summary": "Exploiter TIMESTAMP, INTERVAL, fuseaux horaires et fonctions analytiques Oracle.",
+      "objectives": [
+        "G?rer les donn?es temporelles avanc?es",
+        "Utiliser les types TIMESTAMP et INTERVAL",
+        "Comprendre SYSTIMESTAMP et timezones"
+      ],
+      "sections": [
+        {
+          "title": "TIMESTAMP et fuseaux horaires",
+          "content": "CURRENT_DATE d?pend du fuseau de la session. SYSTIMESTAMP renvoie une date/heure avec pr?cision jusqu'? la nanoseconde. DBTIMEZONE et SESSIONTIMEZONE donnent les fuseaux respectifs.",
+          "code": "SELECT CURRENT_DATE AS date_session, SYSDATE AS date_serveur, SYSTIMESTAMP AS timestamp_serveur, CURRENT_TIMESTAMP AS timestamp_session, SESSIONTIMEZONE AS timezone_session, DBTIMEZONE AS timezone_base FROM DUAL;",
+          "result": "Dates et fuseaux affich?s correctement.",
+          "pitfalls": [
+            "CURRENT_DATE et SYSDATE peuvent diff?rer si la session utilise un fuseau timezone diff?rent",
+            "SYSTIMESTAMP inclut les fractions de seconde"
+          ]
+        },
+        {
+          "title": "Intervals et conversion temporelle",
+          "content": "INTERVAL permet de stocker des dur?es. NUMTODSINTERVAL et NUMTOYMINTERVAL convertissent des valeurs num?riques en intervalles.",
+          "code": "SELECT INTERVAL '5' YEAR AS ans, INTERVAL '3-6' YEAR TO MONTH AS ans_mois, INTERVAL '10 12:30:45' DAY TO SECOND AS jours_heures, NUMTODSINTERVAL(150, 'MINUTE') AS minutes, NUMTOYMINTERVAL(30, 'MONTH') AS mois FROM DUAL;",
+          "result": "INTERVAL values created.",
+          "pitfalls": [
+            "INTERVAL de type YEAR TO MONTH ne peut pas ?tre converti en DAY TO SECOND directement",
+            "Les formats doivent ?tre exacts"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Requ?tes avanc?es et optimisation",
+      "summary": "Techniques de requ?tes complexes, CTE, pagination, analyse de top-N et fonctions analytiques.",
+      "objectives": [
+        "Cr?er des CTE et des requ?tes imbriqu?es",
+        "Paginer avec ROW_NUMBER et ROWNUM",
+        "Utiliser les fonctions analytiques pour l'analyse avanc?e"
+      ],
+      "sections": [
+        {
+          "title": "WITH et CTE",
+          "content": "WITH d?finit des Common Table Expressions pour structurer les requ?tes complexes et r?utiliser des sous-requ?tes.",
+          "code": "WITH dept_avg AS (SELECT department_id, AVG(salary) AS avg_salary FROM employees GROUP BY department_id) SELECT e.last_name, e.salary, d.avg_salary FROM employees e JOIN dept_avg d ON e.department_id = d.department_id WHERE e.salary > d.avg_salary;",
+          "result": "Employ?s au-dessus de la moyenne de leur d?partement.",
+          "pitfalls": [
+            "Une CTE est ex?cut?e ? chaque r?f?rence sauf optimisation interne",
+            "Les noms de CTE doivent ?tre uniques dans la requ?te"
+          ]
+        },
+        {
+          "title": "ROWNUM vs ROW_NUMBER pour top-N",
+          "content": "ROWNUM est assign? avant ORDER BY. ROW_NUMBER() est calcul? apr?s tri et est pr?f?rable pour la pagination et le top-N.",
+          "code": "SELECT * FROM (SELECT employee_id, last_name, salary FROM employees ORDER BY salary DESC) WHERE ROWNUM <= 5;\nSELECT * FROM (SELECT employee_id, last_name, salary, ROW_NUMBER() OVER (ORDER BY salary DESC) AS rn FROM employees) WHERE rn BETWEEN 11 AND 20;",
+          "result": "Top-N correct et pagination avec ROW_NUMBER.",
+          "pitfalls": [
+            "ROWNUM > 1 ne fonctionne pas sans sous-requ?te",
+            "ROW_NUMBER peut ?tre utilis? pour un classement continu"
+          ]
+        },
+        {
+          "title": "Fonctions analytiques avanc?es",
+          "content": "ROW_NUMBER, RANK, DENSE_RANK, LAG et LEAD permettent d'analyser des lignes par fen?tre sans r?duire les r?sultats.",
+          "code": "SELECT last_name, salary, department_id, ROW_NUMBER() OVER (ORDER BY salary DESC) AS rang_global, RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rang_dept, DENSE_RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rang_dense, LAG(salary, 1) OVER (ORDER BY hire_date) AS salaire_precedent, LEAD(salary, 1) OVER (ORDER BY hire_date) AS salaire_suivant FROM employees;",
+          "result": "Analyse d?taill?e par fen?tre pour chaque employ?.",
+          "pitfalls": [
+            "Les fonctions analytiques n?cessitent un ORDER BY dans OVER",
+            "LAG/LEAD peuvent retourner NULL en bordure de fen?tre"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Pr?paration ? l'examen 1Z0-071 et pi?ges classiques",
+      "summary": "Strat?gies d'?tude, exam pi?ges, logique NULL, ordre d'ex?cution et conseils de r?vision.",
+      "objectives": [
+        "Pr?parer l'examen avec une strat?gie claire",
+        "Identifier les pi?ges classiques Oracle",
+        "S'entra?ner dans des conditions r?elles"
+      ],
+      "sections": [
+        {
+          "title": "Ordre d'ex?cution SQL et alias",
+          "content": "L'ordre logique d'ex?cution est : FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY. Les alias d?finis dans SELECT ne sont pas disponibles dans WHERE.",
+          "code": "SELECT last_name AS nom, salary FROM employees WHERE last_name = 'KING';",
+          "result": "Utilisation correcte des alias et de WHERE.",
+          "pitfalls": [
+            "WHERE nom = 'KING' est incorrect car alias non encore cr??",
+            "GROUP BY est ?valu? avant HAVING"
+          ]
+        },
+        {
+          "title": "NULL et logique ? trois valeurs",
+          "content": "Oracle utilise la logique TRUE / FALSE / UNKNOWN. Les comparaisons avec NULL renvoient UNKNOWN et doivent ?tre faites avec IS NULL ou IS NOT NULL.",
+          "code": "SELECT * FROM employees WHERE commission_pct IS NULL;\nSELECT * FROM employees WHERE commission_pct IS NOT NULL;",
+          "result": "Lignes avec ou sans commission.",
+          "pitfalls": [
+            "commission_pct = NULL retourne toujours FALSE/UNKNOWN",
+            "NOT IN avec une valeur NULL renvoie UNKNOWN"
+          ]
+        },
+        {
+          "title": "ROWNUM vs ROW_NUMBER et top-N",
+          "content": "ROWNUM est attribu? avant le tri. Pour obtenir les meilleurs r?sultats, triez d'abord dans une sous-requ?te puis filtrez ROWNUM.",
+          "code": "SELECT * FROM (SELECT * FROM employees ORDER BY salary DESC) WHERE ROWNUM <= 5;",
+          "result": "Top 5 salaires calcul? correctement.",
+          "pitfalls": [
+            "SELECT * FROM employees WHERE ROWNUM <= 5 ORDER BY salary DESC est incorrect",
+            "ROW_NUMBER fournit un classement stable"
+          ]
+        },
+        {
+          "title": "Conseils de r?vision pour l'examen",
+          "content": "Pratiquez intensivement chaque exemple, testez en conditions d'examen, maitrisez les pi?ges NULL et GROUP BY, et r?visez les anciennes syntaxes Oracle (+) pour ?tre pr?t.",
+          "code": "-- Strat?gie de r?vision : Reprendre chaque module, appliquer chaque exemple, puis simuler un examen blanc de 63 questions en 120 minutes.",
+          "result": "Pr?paration structur?e et efficace.",
+          "pitfalls": [
+            "M?moriser sans comprendre les concepts ne suffit pas",
+            "N?gliger les exercices pratiques reduce la pr?paration"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2160 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "module": 1,
+      "question": "Quelle catégorie SQL comprend la commande CREATE TABLE ?",
+      "options": [
+        "DML",
+        "DDL",
+        "DCL",
+        "TCL"
+      ],
+      "correctIndex": 1,
+      "explanation": "CREATE TABLE modifie la structure = DDL (Data Définition Language).",
+      "code": null
+    },
+    {
+      "id": 2,
+      "module": 1,
+      "question": "Quelle commande fait partie du TCL ?",
+      "options": [
+        "GRANT",
+        "SELECT",
+        "COMMIT",
+        "ALTER"
+      ],
+      "correctIndex": 2,
+      "explanation": "COMMIT valide une transaction = TCL.",
+      "code": null
+    },
+    {
+      "id": 3,
+      "module": 1,
+      "question": "Quel type de contrainte garantit l unicité et interdit NULL ?",
+      "options": [
+        "UNIQUE",
+        "PRIMARY KEY",
+        "FOREIGN KEY",
+        "CHECK"
+      ],
+      "correctIndex": 1,
+      "explanation": "PRIMARY KEY = UNIQUE + NOT NULL.",
+      "code": null
+    },
+    {
+      "id": 4,
+      "module": 1,
+      "question": "SELECT est classifie comme :",
+      "options": [
+        "DDL",
+        "DML",
+        "DCL",
+        "TCL"
+      ],
+      "correctIndex": 1,
+      "explanation": "A l examen Oracle, SELECT est DML.",
+      "code": null
+    },
+    {
+      "id": 5,
+      "module": 1,
+      "question": "TRUNCATE est une commande :",
+      "options": [
+        "DML avec rollback possible",
+        "DDL avec commit implicite",
+        "DCL",
+        "TCL"
+      ],
+      "correctIndex": 1,
+      "explanation": "TRUNCATE = DDL, commit implicite, non rollbackable.",
+      "code": null
+    },
+    {
+      "id": 6,
+      "module": 1,
+      "question": "Une cle étrangère référence :",
+      "options": [
+        "N importe quelle colonne",
+        "Une cle primaire ou unique parent",
+        "Une vue",
+        "Un index"
+      ],
+      "correctIndex": 1,
+      "explanation": "FK référence PK ou UNIQUE de la table parente.",
+      "code": null
+    },
+    {
+      "id": 7,
+      "module": 1,
+      "question": "GRANT appartient a :",
+      "options": [
+        "DDL",
+        "DML",
+        "DCL",
+        "TCL"
+      ],
+      "correctIndex": 2,
+      "explanation": "GRANT/REVOKE = DCL.",
+      "code": null
+    },
+    {
+      "id": 8,
+      "module": 1,
+      "question": "ROLLBACK appartient a :",
+      "options": [
+        "DDL",
+        "DML",
+        "DCL",
+        "TCL"
+      ],
+      "correctIndex": 3,
+      "explanation": "ROLLBACK annule transaction = TCL.",
+      "code": null
+    },
+    {
+      "id": 9,
+      "module": 1,
+      "question": "Le modele relationnel stocke les données sous forme de :",
+      "options": [
+        "Documents JSON",
+        "Tables",
+        "Graphes",
+        "Fichiers"
+      ],
+      "correctIndex": 1,
+      "explanation": "Modele relationnel = tables.",
+      "code": null
+    },
+    {
+      "id": 10,
+      "module": 1,
+      "question": "Une relation 1:N signifie :",
+      "options": [
+        "Un enregistrement lie a un seul",
+        "Un enregistrement lie a plusieurs",
+        "Plusieurs a plusieurs",
+        "Aucune relation"
+      ],
+      "correctIndex": 1,
+      "explanation": "1:N = un parent, plusieurs enfants.",
+      "code": null
+    },
+    {
+      "id": 11,
+      "module": 1,
+      "question": "Le dictionnaire de données Oracle est consulte via :",
+      "options": [
+        "Vues USER_*/ALL_*/DBA_*",
+        "Table DUAL uniquement",
+        "Fichiers redo log",
+        "Control file directement"
+      ],
+      "correctIndex": 0,
+      "explanation": "Metadonnées dans vues USER_, ALL_, DBA_.",
+      "code": null
+    },
+    {
+      "id": 12,
+      "module": 2,
+      "question": "Quelle table Oracle permet d évaluer des expressions sans table metier ?",
+      "options": [
+        "EMPLOYEES",
+        "DUAL",
+        "SYSTEM",
+        "SYS"
+      ],
+      "correctIndex": 1,
+      "explanation": "DUAL = table dummy Oracle.",
+      "code": null
+    },
+    {
+      "id": 13,
+      "module": 2,
+      "question": "SUBSTR('ORACLE', 2, 3) retourne :",
+      "options": [
+        "ORA",
+        "RAC",
+        "RACLE",
+        "OR"
+      ],
+      "correctIndex": 1,
+      "explanation": "Position 2, longueur 3 = RAC.",
+      "code": null
+    },
+    {
+      "id": 14,
+      "module": 2,
+      "question": "NVL(commission_pct, 0) remplace :",
+      "options": [
+        "Zero par NULL",
+        "NULL par 0",
+        "Toutes valeurs par 0",
+        "Erreur si NULL"
+      ],
+      "correctIndex": 1,
+      "explanation": "NVL remplace NULL par la valeur 2.",
+      "code": null
+    },
+    {
+      "id": 15,
+      "module": 2,
+      "question": "La concatenation Oracle utilise :",
+      "options": [
+        "+",
+        "||",
+        "CONCAT uniquement",
+        "&"
+      ],
+      "correctIndex": 1,
+      "explanation": "|| est l opérateur de concatenation.",
+      "code": null
+    },
+    {
+      "id": 16,
+      "module": 2,
+      "question": "TO_CHAR(salary, '999,999') sert a :",
+      "options": [
+        "Convertir texte en nombre",
+        "Formater nombre en texte",
+        "Convertir date",
+        "Supprimer format"
+      ],
+      "correctIndex": 1,
+      "explanation": "TO_CHAR formate en chaîne.",
+      "code": null
+    },
+    {
+      "id": 17,
+      "module": 2,
+      "question": "UPPER('Sql') retourne :",
+      "options": [
+        "sql",
+        "SQL",
+        "Sql",
+        "ERROR"
+      ],
+      "correctIndex": 1,
+      "explanation": "UPPER met en majuscules.",
+      "code": null
+    },
+    {
+      "id": 18,
+      "module": 2,
+      "question": "LENGTH('Oracle') retourne :",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctIndex": 1,
+      "explanation": "6 caractères.",
+      "code": null
+    },
+    {
+      "id": 19,
+      "module": 2,
+      "question": "INITCAP('jean dupont') retourne :",
+      "options": [
+        "JEAN DUPONT",
+        "Jean Dupont",
+        "jean dupont",
+        "Jean dupont"
+      ],
+      "correctIndex": 1,
+      "explanation": "INITCAP capitalise chaque mot.",
+      "code": null
+    },
+    {
+      "id": 20,
+      "module": 2,
+      "question": "Un alias de colonne est defini avec :",
+      "options": [
+        "ALIAS uniquement",
+        "AS ou espace",
+        "RENAME",
+        "LABEL"
+      ],
+      "correctIndex": 1,
+      "explanation": "AS ou espace apres expression.",
+      "code": null
+    },
+    {
+      "id": 21,
+      "module": 2,
+      "question": "DISTINCT dans SELECT :",
+      "options": [
+        "Trie les résultats",
+        "Élimine les doublons",
+        "Filtre les NULL",
+        "Compte les lignes"
+      ],
+      "correctIndex": 1,
+      "explanation": "DISTINCT supprime combinaisons dupliquees.",
+      "code": null
+    },
+    {
+      "id": 22,
+      "module": 2,
+      "question": "MOD(10, 3) retourne :",
+      "options": [
+        "3",
+        "1",
+        "0",
+        "10"
+      ],
+      "correctIndex": 1,
+      "explanation": "Reste de 10/3 = 1.",
+      "code": null
+    },
+    {
+      "id": 23,
+      "module": 2,
+      "question": "CASE WHEN salary > 10000 THEN 'H' ELSE 'L' END est :",
+      "options": [
+        "Fonction d agrégation",
+        "Expression conditionnelle",
+        "Jointure",
+        "Sous-requête"
+      ],
+      "correctIndex": 1,
+      "explanation": "CASE = expression conditionnelle.",
+      "code": null
+    },
+    {
+      "id": 24,
+      "module": 3,
+      "question": "BETWEEN 100 AND 200 inclut :",
+      "options": [
+        "100 et 200",
+        "101 a 199",
+        "100 seulement",
+        "200 seulement"
+      ],
+      "correctIndex": 0,
+      "explanation": "BETWEEN inclut les bornes.",
+      "code": null
+    },
+    {
+      "id": 25,
+      "module": 3,
+      "question": "WHERE last_name LIKE 'S%' trouve :",
+      "options": [
+        "Noms finissant par S",
+        "Noms commencant par S",
+        "Noms avec S au milieu",
+        "Exactement S"
+      ],
+      "correctIndex": 1,
+      "explanation": "% = zero ou plus caractères apres S.",
+      "code": null
+    },
+    {
+      "id": 26,
+      "module": 3,
+      "question": "Pour tester NULL on utilise :",
+      "options": [
+        "= NULL",
+        "IS NULL",
+        "== NULL",
+        "EQUALS NULL"
+      ],
+      "correctIndex": 1,
+      "explanation": "IS NULL est la syntaxe correcte.",
+      "code": null
+    },
+    {
+      "id": 27,
+      "module": 3,
+      "question": "ORDER BY salary DESC trie :",
+      "options": [
+        "Croissant",
+        "Decroissant",
+        "Alphabetique",
+        "Par departement"
+      ],
+      "correctIndex": 1,
+      "explanation": "DESC = decroissant.",
+      "code": null
+    },
+    {
+      "id": 28,
+      "module": 3,
+      "question": "NULLS FIRST avec ORDER BY DESC place NULL :",
+      "options": [
+        "En premier",
+        "En dernier",
+        "Exclus",
+        "Erreur"
+      ],
+      "correctIndex": 0,
+      "explanation": "NULLS FIRST explicite.",
+      "code": null
+    },
+    {
+      "id": 29,
+      "module": 3,
+      "question": "NOT IN (1, 2, NULL) retourne :",
+      "options": [
+        "Toutes lignes",
+        "Aucune ligne",
+        "Erreur",
+        "Lignes sauf 1 et 2"
+      ],
+      "correctIndex": 1,
+      "explanation": "NULL dans NOT IN = résultat vide/unknown.",
+      "code": null
+    },
+    {
+      "id": 30,
+      "module": 3,
+      "question": "WHERE a = 5 AND b = 10 : si a=5 et b=NULL résultat :",
+      "options": [
+        "TRUE",
+        "FALSE",
+        "UNKNOWN/FALSE",
+        "Erreur"
+      ],
+      "correctIndex": 2,
+      "explanation": "AND avec NULL = UNKNOWN, ligne exclue.",
+      "code": null
+    },
+    {
+      "id": 31,
+      "module": 3,
+      "question": "IN (10, 20, 30) equivaut a :",
+      "options": [
+        "= ANY (...)",
+        "= ALL (...)",
+        "BETWEEN 10 AND 30",
+        "LIKE"
+      ],
+      "correctIndex": 0,
+      "explanation": "IN = = ANY.",
+      "code": null
+    },
+    {
+      "id": 32,
+      "module": 3,
+      "question": "Le joker _ dans LIKE signifie :",
+      "options": [
+        "Zero ou plus caractères",
+        "Exactement un caractèree",
+        "N importe quel caractèree special",
+        "Debut de chaîne"
+      ],
+      "correctIndex": 1,
+      "explanation": "_ = un caractèree.",
+      "code": null
+    },
+    {
+      "id": 33,
+      "module": 3,
+      "question": "WHERE peut utiliser un alias de colonne ?",
+      "options": [
+        "Oui toujours",
+        "Non",
+        "Seulement avec AS",
+        "Seulement en Oracle 19c"
+      ],
+      "correctIndex": 1,
+      "explanation": "Alias non disponibles dans WHERE.",
+      "code": null
+    },
+    {
+      "id": 34,
+      "module": 3,
+      "question": "ORDER BY peut utiliser un alias ?",
+      "options": [
+        "Non",
+        "Oui",
+        "Seulement en HAVING",
+        "Seulement avec DISTINCT"
+      ],
+      "correctIndex": 1,
+      "explanation": "ORDER BY accepte les alias.",
+      "code": null
+    },
+    {
+      "id": 35,
+      "module": 4,
+      "question": "COUNT(*) compte :",
+      "options": [
+        "Valeurs non NULL",
+        "Toutes les lignes",
+        "Distinct values",
+        "Groupes uniquement"
+      ],
+      "correctIndex": 1,
+      "explanation": "COUNT(*) = toutes lignes.",
+      "code": null
+    },
+    {
+      "id": 36,
+      "module": 4,
+      "question": "COUNT(email) ignore :",
+      "options": [
+        "Doublons",
+        "NULL",
+        "Zero",
+        "Espaces"
+      ],
+      "correctIndex": 1,
+      "explanation": "COUNT(col) ignore NULL.",
+      "code": null
+    },
+    {
+      "id": 37,
+      "module": 4,
+      "question": "HAVING filtre :",
+      "options": [
+        "Avant GROUP BY",
+        "Apres GROUP BY",
+        "Avant WHERE",
+        "Les colonnes seulement"
+      ],
+      "correctIndex": 1,
+      "explanation": "HAVING filtre les groupes.",
+      "code": null
+    },
+    {
+      "id": 38,
+      "module": 4,
+      "question": "WHERE salary > 5000 avec GROUP BY department_id :",
+      "options": [
+        "Valide si salary dans GROUP BY",
+        "Valide car filtre avant agrégation",
+        "Erreur",
+        "Remplace HAVING"
+      ],
+      "correctIndex": 1,
+      "explanation": "WHERE filtre lignes avant groupement.",
+      "code": null
+    },
+    {
+      "id": 39,
+      "module": 4,
+      "question": "AVG(salary) ignore :",
+      "options": [
+        "Zero",
+        "NULL",
+        "Negatifs",
+        "Doublons"
+      ],
+      "correctIndex": 1,
+      "explanation": "AVG ignore NULL.",
+      "code": null
+    },
+    {
+      "id": 40,
+      "module": 4,
+      "question": "SELECT dept, AVG(sal) sans GROUP BY dept :",
+      "options": [
+        "Valide",
+        "Erreur ORA",
+        "Retourne NULL",
+        "Retourne une ligne"
+      ],
+      "correctIndex": 1,
+      "explanation": "Colonne non agrégée doit etre dans GROUP BY.",
+      "code": null
+    },
+    {
+      "id": 41,
+      "module": 4,
+      "question": "GROUP BY department_id, job_id cree groupes par :",
+      "options": [
+        "Dept seulement",
+        "Combinaison dept+job",
+        "Job seulement",
+        "Toute la table"
+      ],
+      "correctIndex": 1,
+      "explanation": "Groupes = combinaison unique.",
+      "code": null
+    },
+    {
+      "id": 42,
+      "module": 4,
+      "question": "HAVING COUNT(*) > 5 equivaut logiquement a filtrer :",
+      "options": [
+        "Lignes individuelles",
+        "Groupes ayant plus de 5 membres",
+        "Colonnes",
+        "Index"
+      ],
+      "correctIndex": 1,
+      "explanation": "HAVING sur agrégat de groupe.",
+      "code": null
+    },
+    {
+      "id": 43,
+      "module": 4,
+      "question": "SUM(DISTINCT salary) :",
+      "options": [
+        "Somme avec doublons",
+        "Somme valeurs uniques",
+        "Erreur",
+        "Compte lignes"
+      ],
+      "correctIndex": 1,
+      "explanation": "DISTINCT dans agrégat.",
+      "code": null
+    },
+    {
+      "id": 44,
+      "module": 4,
+      "question": "MIN() peut s appliquer a :",
+      "options": [
+        "Numériques seulement",
+        "Dates et nombres",
+        "Texte seulement",
+        "BLOB"
+      ],
+      "correctIndex": 1,
+      "explanation": "MIN/MAX sur dates et nombres.",
+      "code": null
+    },
+    {
+      "id": 45,
+      "module": 4,
+      "question": "SELECT COUNT(DISTINCT department_id) :",
+      "options": [
+        "Compte tous dept",
+        "Compte dept uniques",
+        "Erreur",
+        "Compte lignes"
+      ],
+      "correctIndex": 1,
+      "explanation": "DISTINCT = uniques.",
+      "code": null
+    },
+    {
+      "id": 46,
+      "module": 4,
+      "question": "Sans GROUP BY, COUNT(*) retourne :",
+      "options": [
+        "Une ligne",
+        "Une ligne par dept",
+        "Erreur",
+        "Zero lignes"
+      ],
+      "correctIndex": 0,
+      "explanation": "Agregat sans GROUP BY = une ligne.",
+      "code": null
+    },
+    {
+      "id": 47,
+      "module": 5,
+      "question": "INNER JOIN retourne :",
+      "options": [
+        "Toutes lignes des deux tables",
+        "Lignes avec correspondance",
+        "Lignes sans correspondance",
+        "Produit cartesien"
+      ],
+      "correctIndex": 1,
+      "explanation": "INNER = intersection.",
+      "code": null
+    },
+    {
+      "id": 48,
+      "module": 5,
+      "question": "LEFT OUTER JOIN préserve :",
+      "options": [
+        "Table droite",
+        "Table gauche",
+        "Les deux",
+        "Aucune"
+      ],
+      "correctIndex": 1,
+      "explanation": "LEFT préserve gauche.",
+      "code": null
+    },
+    {
+      "id": 49,
+      "module": 5,
+      "question": "En syntaxe Oracle (+), pour LEFT JOIN sur e.dept=d.dept_id :",
+      "options": [
+        "(+) sur e.dept_id",
+        "(+) sur d.department_id",
+        "(+) des deux cotes",
+        "Pas de (+)"
+      ],
+      "correctIndex": 1,
+      "explanation": "(+) cote table non préservee (droite).",
+      "code": null
+    },
+    {
+      "id": 50,
+      "module": 5,
+      "question": "Produit cartesien resulte de :",
+      "options": [
+        "JOIN sans ON",
+        "INNER JOIN",
+        "UNION",
+        "GROUP BY"
+      ],
+      "correctIndex": 0,
+      "explanation": "Jointure sans condition = cartesien.",
+      "code": null
+    },
+    {
+      "id": 51,
+      "module": 5,
+      "question": "NATURAL JOIN joint sur :",
+      "options": [
+        "Cle primaire",
+        "Colonnes meme nom",
+        "Toutes colonnes",
+        "Index"
+      ],
+      "correctIndex": 1,
+      "explanation": "Colonnes identiques nom.",
+      "code": null
+    },
+    {
+      "id": 52,
+      "module": 5,
+      "question": "JOIN USING (department_id) :",
+      "options": [
+        "Requiert alias",
+        "Joint sur colonne commune nommee",
+        "Est un CROSS JOIN",
+        "Remplace WHERE"
+      ],
+      "correctIndex": 1,
+      "explanation": "USING(col) joint sur nom identique.",
+      "code": null
+    },
+    {
+      "id": 53,
+      "module": 5,
+      "question": "FULL OUTER JOIN :",
+      "options": [
+        "Existe en syntaxe (+)",
+        "Retourne toutes lignes des deux",
+        "Identique INNER",
+        "Exclut NULL"
+      ],
+      "correctIndex": 1,
+      "explanation": "FULL = union des OUTER.",
+      "code": null
+    },
+    {
+      "id": 54,
+      "module": 5,
+      "question": "Self-join necessite :",
+      "options": [
+        "Deux tables differentes",
+        "Alias de table",
+        "UNION",
+        "HAVING"
+      ],
+      "correctIndex": 1,
+      "explanation": "Alias pour distinguer instances.",
+      "code": null
+    },
+    {
+      "id": 55,
+      "module": 5,
+      "question": "CROSS JOIN produit :",
+      "options": [
+        "Lignes correspondantes",
+        "Produit cartesien",
+        "UNION",
+        "INTERSECT"
+      ],
+      "correctIndex": 1,
+      "explanation": "CROSS JOIN = cartesien explicite.",
+      "code": null
+    },
+    {
+      "id": 56,
+      "module": 5,
+      "question": "RIGHT JOIN a.dept = b.dept equivaut LEFT JOIN :",
+      "options": [
+        "Identique",
+        "b LEFT JOIN a",
+        "Impossible",
+        "FULL JOIN"
+      ],
+      "correctIndex": 1,
+      "explanation": "RIGHT(a,b) = LEFT(b,a).",
+      "code": null
+    },
+    {
+      "id": 57,
+      "module": 5,
+      "question": "Non-equi join utilise :",
+      "options": [
+        "= uniquement",
+        "<, >, BETWEEN",
+        "UNION",
+        "MINUS"
+      ],
+      "correctIndex": 1,
+      "explanation": "Conditions non-egalite.",
+      "code": null
+    },
+    {
+      "id": 58,
+      "module": 5,
+      "question": "Combien de (+) max par condition ?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "Illimite"
+      ],
+      "correctIndex": 1,
+      "explanation": "Un seul cote par condition.",
+      "code": null
+    },
+    {
+      "id": 59,
+      "module": 6,
+      "question": "Sous-requête scalar doit retourner :",
+      "options": [
+        "Plusieurs lignes",
+        "Une ligne, une colonne",
+        "Zero colonnes",
+        "Plusieurs colonnes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Scalar = 1 ligne, 1 colonne.",
+      "code": null
+    },
+    {
+      "id": 60,
+      "module": 6,
+      "question": "EXISTS retourne TRUE si :",
+      "options": [
+        "Sous-requête retourne 0 ligne",
+        "Au moins une ligne",
+        "Valeur NULL",
+        "Erreur"
+      ],
+      "correctIndex": 1,
+      "explanation": "EXISTS teste presence lignes.",
+      "code": null
+    },
+    {
+      "id": 61,
+      "module": 6,
+      "question": "IN vs EXISTS : performance souvent favorise :",
+      "options": [
+        "IN toujours",
+        "EXISTS pour grandes tables correlees",
+        "Identique",
+        "NOT EXISTS jamais"
+      ],
+      "correctIndex": 1,
+      "explanation": "EXISTS s arretent au premier match.",
+      "code": null
+    },
+    {
+      "id": 62,
+      "module": 6,
+      "question": "> ALL (100, 200) signifie :",
+      "options": [
+        "Supérieur a au moins un",
+        "Supérieur a tous",
+        "Inférieur a tous",
+        "Egal a un"
+      ],
+      "correctIndex": 1,
+      "explanation": "> ALL = supérieur a chaque valeur.",
+      "code": null
+    },
+    {
+      "id": 63,
+      "module": 6,
+      "question": "Sous-requête dans FROM est :",
+      "options": [
+        "Inline view",
+        "Scalar subquery",
+        "Correlee obligatoire",
+        "Interdit"
+      ],
+      "correctIndex": 0,
+      "explanation": "FROM (SELECT...) = inline view.",
+      "code": null
+    },
+    {
+      "id": 64,
+      "module": 6,
+      "question": "Correlated subquery :",
+      "options": [
+        "Independante",
+        "Référence requête externe",
+        "Dans SELECT uniquement",
+        "Retourne toujours NULL"
+      ],
+      "correctIndex": 1,
+      "explanation": "Référence colonnes externes.",
+      "code": null
+    },
+    {
+      "id": 65,
+      "module": 6,
+      "question": "ORA-01427 indique :",
+      "options": [
+        "Division par zero",
+        "Sous-requête retourne trop de lignes",
+        "Syntaxe invalide",
+        "Table inexistante"
+      ],
+      "correctIndex": 1,
+      "explanation": "Single-row subquery returns more than one row.",
+      "code": null
+    },
+    {
+      "id": 66,
+      "module": 6,
+      "question": "< ANY (5, 10, 15) signifie :",
+      "options": [
+        "Inférieur a tous",
+        "Inférieur a au moins un",
+        "Supérieur a tous",
+        "Egal"
+      ],
+      "correctIndex": 1,
+      "explanation": "< ANY = inférieur a un des valeurs.",
+      "code": null
+    },
+    {
+      "id": 67,
+      "module": 6,
+      "question": "SELECT avec sous-requête dans SELECT (scalar) :",
+      "options": [
+        "Interdit",
+        "Autorise si 1 ligne/col",
+        "Requiert GROUP BY",
+        "Requiert UNION"
+      ],
+      "correctIndex": 1,
+      "explanation": "Scalar subquery dans SELECT OK.",
+      "code": null
+    },
+    {
+      "id": 68,
+      "module": 6,
+      "question": "NOT EXISTS (SELECT 1 FROM ... WHERE ...) :",
+      "options": [
+        "Retourne lignes si sous-requête vide",
+        "Retourne lignes si sous-requête a lignes",
+        "Erreur",
+        "Equivaut IN"
+      ],
+      "correctIndex": 0,
+      "explanation": "NOT EXISTS vrai si sous-requête vide.",
+      "code": null
+    },
+    {
+      "id": 69,
+      "module": 6,
+      "question": "= ANY equivaut a :",
+      "options": [
+        "IN",
+        "NOT IN",
+        "ALL",
+        "EXISTS"
+      ],
+      "correctIndex": 0,
+      "explanation": "= ANY = IN.",
+      "code": null
+    },
+    {
+      "id": 70,
+      "module": 7,
+      "question": "UNION vs UNION ALL :",
+      "options": [
+        "Identiques",
+        "UNION élimine doublons",
+        "UNION ALL élimine doublons",
+        "UNION ALL trie"
+      ],
+      "correctIndex": 1,
+      "explanation": "UNION = distinct implicite.",
+      "code": null
+    },
+    {
+      "id": 71,
+      "module": 7,
+      "question": "INTERSECT retourne :",
+      "options": [
+        "Lignes des deux requêtes",
+        "Lignes communes",
+        "Lignes differentes",
+        "Produit cartesien"
+      ],
+      "correctIndex": 1,
+      "explanation": "INTERSECT = intersection ensembliste.",
+      "code": null
+    },
+    {
+      "id": 72,
+      "module": 7,
+      "question": "MINUS en Oracle equivaut a :",
+      "options": [
+        "UNION",
+        "EXCEPT en SQL standard",
+        "INTERSECT",
+        "CROSS JOIN"
+      ],
+      "correctIndex": 1,
+      "explanation": "MINUS = EXCEPT.",
+      "code": null
+    },
+    {
+      "id": 73,
+      "module": 7,
+      "question": "Requêtes en UNION doivent avoir :",
+      "options": [
+        "Meme nombre colonnes compatibles",
+        "Meme table",
+        "Meme WHERE",
+        "GROUP BY identique"
+      ],
+      "correctIndex": 0,
+      "explanation": "Meme nb colonnes, types compatibles.",
+      "code": null
+    },
+    {
+      "id": 74,
+      "module": 7,
+      "question": "ORDER BY avec UNION s applique :",
+      "options": [
+        "A chaque requête",
+        "Au résultat final",
+        "Impossible",
+        "Seulement premier SELECT"
+      ],
+      "correctIndex": 1,
+      "explanation": "ORDER BY final sur ensemble.",
+      "code": null
+    },
+    {
+      "id": 75,
+      "module": 7,
+      "question": "UNION ALL est :",
+      "options": [
+        "Plus lent que UNION",
+        "Plus rapide car pas de dedup",
+        "Interdit en Oracle",
+        "Identique INTERSECT"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pas de tri/distinct = plus rapide.",
+      "code": null
+    },
+    {
+      "id": 76,
+      "module": 7,
+      "question": "MINUS A MINUS B :",
+      "options": [
+        "Ordre important",
+        "Commutatif",
+        "Impossible",
+        "Egale INTERSECT"
+      ],
+      "correctIndex": 0,
+      "explanation": "MINUS non commutatif.",
+      "code": null
+    },
+    {
+      "id": 77,
+      "module": 7,
+      "question": "Colonne 1 number, colonne 1 varchar en UNION :",
+      "options": [
+        "Erreur toujours",
+        "Conversion implicite possible",
+        "Interdit Oracle",
+        "UNION ALL requis"
+      ],
+      "correctIndex": 1,
+      "explanation": "Oracle convertit implicitement si possible.",
+      "code": null
+    },
+    {
+      "id": 78,
+      "module": 7,
+      "question": "INTERSECT élimine :",
+      "options": [
+        "Doublons",
+        "NULL",
+        "Colonnes",
+        "Index"
+      ],
+      "correctIndex": 0,
+      "explanation": "INTERSECT fait DISTINCT.",
+      "code": null
+    },
+    {
+      "id": 79,
+      "module": 7,
+      "question": "Combien de requêtes minimum pour UNION ?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctIndex": 1,
+      "explanation": "Au moins 2 SELECT.",
+      "code": null
+    },
+    {
+      "id": 80,
+      "module": 8,
+      "question": "AVG(sal) OVER (PARTITION BY dept) calcule :",
+      "options": [
+        "Moyenne globale",
+        "Moyenne par departement",
+        "Somme",
+        "Count"
+      ],
+      "correctIndex": 1,
+      "explanation": "PARTITION BY dept = fenêtre par dept.",
+      "code": null
+    },
+    {
+      "id": 81,
+      "module": 8,
+      "question": "ROW_NUMBER vs RANK avec ex-aequo :",
+      "options": [
+        "Identiques",
+        "RANK saute numéros",
+        "ROW_NUMBER saute",
+        "RANK identique toujours"
+      ],
+      "correctIndex": 1,
+      "explanation": "RANK 1,1,3 vs ROW_NUMBER 1,2,3.",
+      "code": null
+    },
+    {
+      "id": 82,
+      "module": 8,
+      "question": "LAG(salary, 1) retourne :",
+      "options": [
+        "Salaire suivant",
+        "Salaire ligne précédente",
+        "Premier salaire",
+        "Moyenne"
+      ],
+      "correctIndex": 1,
+      "explanation": "LAG = ligne précédente.",
+      "code": null
+    },
+    {
+      "id": 83,
+      "module": 8,
+      "question": "OVER () sans PARTITION BY :",
+      "options": [
+        "Erreur",
+        "Fenêtre sur toute la table",
+        "Une ligne",
+        "NULL"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pas de partition = table entiere.",
+      "code": null
+    },
+    {
+      "id": 84,
+      "module": 8,
+      "question": "DENSE_RANK vs RANK :",
+      "options": [
+        "DENSE_RANK saute des rangs",
+        "DENSE_RANK ne saute pas",
+        "Identiques",
+        "DENSE_RANK plus lent"
+      ],
+      "correctIndex": 1,
+      "explanation": "DENSE_RANK 1,1,2 sans gap.",
+      "code": null
+    },
+    {
+      "id": 85,
+      "module": 8,
+      "question": "Fonctions analytiques vs GROUP BY :",
+      "options": [
+        "Reduisent lignes",
+        "Conservent detail lignes",
+        "Identiques",
+        "Interdites ensemble"
+      ],
+      "correctIndex": 1,
+      "explanation": "Analytiques gardent chaque ligne.",
+      "code": null
+    },
+    {
+      "id": 86,
+      "module": 8,
+      "question": "LEAD(hire_date, 2) :",
+      "options": [
+        "2 dates avant",
+        "2 dates apres",
+        "Erreur",
+        "Date actuelle"
+      ],
+      "correctIndex": 1,
+      "explanation": "LEAD = lignes suivantes, offset 2.",
+      "code": null
+    },
+    {
+      "id": 87,
+      "module": 8,
+      "question": "FIRST_VALUE(salary) OVER (...) :",
+      "options": [
+        "Derniere valeur",
+        "Premiere valeur fenêtre",
+        "Minimum",
+        "Maximum"
+      ],
+      "correctIndex": 1,
+      "explanation": "FIRST_VALUE = premiere de la fenêtre.",
+      "code": null
+    },
+    {
+      "id": 88,
+      "module": 8,
+      "question": "ORDER BY dans OVER est requis pour :",
+      "options": [
+        "COUNT(*)",
+        "ROW_NUMBER",
+        "SUM sans tri",
+        "MAX"
+      ],
+      "correctIndex": 1,
+      "explanation": "ROW_NUMBER necessite ORDER BY.",
+      "code": null
+    },
+    {
+      "id": 89,
+      "module": 8,
+      "question": "ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW :",
+      "options": [
+        "Fenêtre mobile",
+        "Fenêtre cumulative",
+        "Erreur",
+        "Toute partition"
+      ],
+      "correctIndex": 1,
+      "explanation": "Cumulative depuis debut partition.",
+      "code": null
+    },
+    {
+      "id": 90,
+      "module": 8,
+      "question": "SUM(sal) OVER (ORDER BY hire_date) :",
+      "options": [
+        "Somme globale",
+        "Somme cumulative",
+        "Moyenne",
+        "Count"
+      ],
+      "correctIndex": 1,
+      "explanation": "Running total avec ORDER BY.",
+      "code": null
+    },
+    {
+      "id": 91,
+      "module": 9,
+      "question": "INSERT INTO t SELECT ... :",
+      "options": [
+        "Interdit",
+        "Insert depuis requête",
+        "Update",
+        "Merge"
+      ],
+      "correctIndex": 1,
+      "explanation": "INSERT...SELECT valide.",
+      "code": null
+    },
+    {
+      "id": 92,
+      "module": 9,
+      "question": "UPDATE sans WHERE :",
+      "options": [
+        "Erreur",
+        "Modifie toutes lignes",
+        "Modifie une ligne",
+        "Rollback auto"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sans WHERE = toutes lignes.",
+      "code": null
+    },
+    {
+      "id": 93,
+      "module": 9,
+      "question": "DELETE vs TRUNCATE :",
+      "options": [
+        "Identiques",
+        "DELETE DML rollbackable, TRUNCATE DDL",
+        "TRUNCATE rollbackable",
+        "DELETE plus rapide toujours"
+      ],
+      "correctIndex": 1,
+      "explanation": "DELETE DML, TRUNCATE DDL.",
+      "code": null
+    },
+    {
+      "id": 94,
+      "module": 9,
+      "question": "MERGE ... ON (...) WHEN MATCHED :",
+      "options": [
+        "Insert seulement",
+        "Update si correspondance",
+        "Delete seulement",
+        "Truncate"
+      ],
+      "correctIndex": 1,
+      "explanation": "WHEN MATCHED = UPDATE typiquement.",
+      "code": null
+    },
+    {
+      "id": 95,
+      "module": 9,
+      "question": "FOR UPDATE sur SELECT :",
+      "options": [
+        "Lecture seule",
+        "Verrouille lignes",
+        "Commit auto",
+        "Supprime lignes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Verrou pessimiste.",
+      "code": null
+    },
+    {
+      "id": 96,
+      "module": 9,
+      "question": "INSERT avec liste colonnes explicite :",
+      "options": [
+        "Obligatoire",
+        "Recommandee/bonne pratique",
+        "Interdite",
+        "Remplace VALUES"
+      ],
+      "correctIndex": 1,
+      "explanation": "Specifie colonnes ciblees.",
+      "code": null
+    },
+    {
+      "id": 97,
+      "module": 9,
+      "question": "SAVEPOINT :",
+      "options": [
+        "Valide transaction",
+        "Point de rollback partiel",
+        "DDL",
+        "Grant privilége"
+      ],
+      "correctIndex": 1,
+      "explanation": "SAVEPOINT = rollback partiel.",
+      "code": null
+    },
+    {
+      "id": 98,
+      "module": 9,
+      "question": "WHEN NOT MATCHED THEN INSERT dans MERGE :",
+      "options": [
+        "Update",
+        "Insert nouvelles lignes",
+        "Delete",
+        "Truncate"
+      ],
+      "correctIndex": 1,
+      "explanation": "NOT MATCHED = INSERT.",
+      "code": null
+    },
+    {
+      "id": 99,
+      "module": 9,
+      "question": "FOR UPDATE NOWAIT :",
+      "options": [
+        "Attend indefiniment",
+        "Erreur si verrou indisponible",
+        "Ignore verrous",
+        "Commit"
+      ],
+      "correctIndex": 1,
+      "explanation": "NOWAIT = pas d attente.",
+      "code": null
+    },
+    {
+      "id": 100,
+      "module": 9,
+      "question": "Apres INSERT sans COMMIT :",
+      "options": [
+        "Visible par tous",
+        "Visible session courante",
+        "Permanent",
+        "Rollback impossible"
+      ],
+      "correctIndex": 1,
+      "explanation": "Non commite = session seulement.",
+      "code": null
+    },
+    {
+      "id": 101,
+      "module": 9,
+      "question": "RETURNING clause avec INSERT :",
+      "options": [
+        "Interdit SQL",
+        "Retourne valeurs inserees (SQL/PLSQL)",
+        "Remplace SELECT",
+        "DDL only"
+      ],
+      "correctIndex": 1,
+      "explanation": "RETURNING disponible DML.",
+      "code": null
+    },
+    {
+      "id": 102,
+      "module": 10,
+      "question": "ALTER TABLE ADD column :",
+      "options": [
+        "Supprime colonne",
+        "Ajoute colonne",
+        "Cree table",
+        "Drop index"
+      ],
+      "correctIndex": 1,
+      "explanation": "ADD ajoute colonne.",
+      "code": null
+    },
+    {
+      "id": 103,
+      "module": 10,
+      "question": "CHECK constraint vérifie :",
+      "options": [
+        "Par transaction",
+        "Par ligne inseree/modifiee",
+        "Par table entiere",
+        "Jamais"
+      ],
+      "correctIndex": 1,
+      "explanation": "CHECK par ligne.",
+      "code": null
+    },
+    {
+      "id": 104,
+      "module": 10,
+      "question": "DROP TABLE CASCADE CONSTRAINTS :",
+      "options": [
+        "Garde FK dependantes",
+        "Supprime FK dependantes",
+        "Erreur",
+        "Truncate"
+      ],
+      "correctIndex": 1,
+      "explanation": "CASCADE supprime contraintes dependantes.",
+      "code": null
+    },
+    {
+      "id": 105,
+      "module": 10,
+      "question": "CREATE TABLE AS SELECT (CTAS) :",
+      "options": [
+        "Cree table vide",
+        "Cree table avec données",
+        "Cree vue",
+        "Insert seulement"
+      ],
+      "correctIndex": 1,
+      "explanation": "CTAS copie structure+données.",
+      "code": null
+    },
+    {
+      "id": 106,
+      "module": 10,
+      "question": "FLASHBACK TABLE necessite :",
+      "options": [
+        "Privilége FLASHBACK",
+        "DBA only toujours",
+        "Impossible Oracle",
+        "DROP d abord"
+      ],
+      "correctIndex": 0,
+      "explanation": "FLASHBACK TABLE privilége requis.",
+      "code": null
+    },
+    {
+      "id": 107,
+      "module": 10,
+      "question": "NOT NULL constraint :",
+      "options": [
+        "Permet NULL",
+        "Interdit NULL",
+        "Unique seulement",
+        "FK"
+      ],
+      "correctIndex": 1,
+      "explanation": "NOT NULL interdit NULL.",
+      "code": null
+    },
+    {
+      "id": 108,
+      "module": 10,
+      "question": "RENAME TABLE en Oracle :",
+      "options": [
+        "ALTER TABLE ... RENAME TO",
+        "RENAME TABLE",
+        "UPDATE",
+        "Impossible"
+      ],
+      "correctIndex": 0,
+      "explanation": "ALTER TABLE t RENAME TO new_t.",
+      "code": null
+    },
+    {
+      "id": 109,
+      "module": 10,
+      "question": "PRIMARY KEY implique :",
+      "options": [
+        "UNIQUE seulement",
+        "UNIQUE + NOT NULL",
+        "FK",
+        "CHECK"
+      ],
+      "correctIndex": 1,
+      "explanation": "PK = unique + not null.",
+      "code": null
+    },
+    {
+      "id": 110,
+      "module": 10,
+      "question": "TRUNCATE libere espace immediatement ?",
+      "options": [
+        "Toujours",
+        "Depend options/storage",
+        "Jamais",
+        "DELETE identique"
+      ],
+      "correctIndex": 1,
+      "explanation": "TRUNCATE DEALLOCATE selon config.",
+      "code": null
+    },
+    {
+      "id": 111,
+      "module": 10,
+      "question": "ADD CONSTRAINT pk PRIMARY KEY :",
+      "options": [
+        "Out-of-line ou inline",
+        "Interdit",
+        "Vue seulement",
+        "Index seulement"
+      ],
+      "correctIndex": 0,
+      "explanation": "Contraintes inline ou out-of-line.",
+      "code": null
+    },
+    {
+      "id": 112,
+      "module": 10,
+      "question": "MODIFY column en Oracle :",
+      "options": [
+        "Change type/taille",
+        "Supprime table",
+        "Grant",
+        "Merge"
+      ],
+      "correctIndex": 0,
+      "explanation": "MODIFY altere colonne.",
+      "code": null
+    },
+    {
+      "id": 113,
+      "module": 11,
+      "question": "CREATE SEQUENCE : NEXTVAL :",
+      "options": [
+        "Valeur précédente",
+        "Prochaîne valeur",
+        "Reset",
+        "Currant sans avance"
+      ],
+      "correctIndex": 1,
+      "explanation": "NEXTVAL avance sequence.",
+      "code": null
+    },
+    {
+      "id": 114,
+      "module": 11,
+      "question": "CURRVAL avant NEXTVAL en session :",
+      "options": [
+        "Retourne 0",
+        "Erreur ORA",
+        "Retourne 1",
+        "Retourne NULL"
+      ],
+      "correctIndex": 1,
+      "explanation": "CURRVAL invalide avant NEXTVAL.",
+      "code": null
+    },
+    {
+      "id": 115,
+      "module": 11,
+      "question": "CREATE VIEW :",
+      "options": [
+        "Stocke données",
+        "Stocke requête",
+        "Est une table",
+        "Index"
+      ],
+      "correctIndex": 1,
+      "explanation": "Vue = requête enregistree.",
+      "code": null
+    },
+    {
+      "id": 116,
+      "module": 11,
+      "question": "Index UNIQUE :",
+      "options": [
+        "Permet doublons",
+        "Enforce unicité",
+        "Remplace PK",
+        "Interdit SELECT"
+      ],
+      "correctIndex": 1,
+      "explanation": "UNIQUE index = unicité.",
+      "code": null
+    },
+    {
+      "id": 117,
+      "module": 11,
+      "question": "Synonyme PUBLIC :",
+      "options": [
+        "Schema user only",
+        "Accèssible tous users",
+        "DBA only view",
+        "Temporaire"
+      ],
+      "correctIndex": 1,
+      "explanation": "PUBLIC synonyme global.",
+      "code": null
+    },
+    {
+      "id": 118,
+      "module": 11,
+      "question": "WITH READ ONLY sur vue :",
+      "options": [
+        "Permet INSERT",
+        "Interdit DML",
+        "Supprime vue",
+        "Cree index"
+      ],
+      "correctIndex": 1,
+      "explanation": "READ ONLY bloque modifications.",
+      "code": null
+    },
+    {
+      "id": 119,
+      "module": 11,
+      "question": "Sequence CACHE option :",
+      "options": [
+        "Stocke en mémoire pour perf",
+        "Supprime gaps",
+        "Interdit NEXTVAL",
+        "Rollback proof"
+      ],
+      "correctIndex": 0,
+      "explanation": "CACHE pre-alloue valeurs.",
+      "code": null
+    },
+    {
+      "id": 120,
+      "module": 11,
+      "question": "CREATE INDEX sur FK column :",
+      "options": [
+        "Inutile",
+        "Ameliore jointures/recherches",
+        "Interdit",
+        "Remplace FK"
+      ],
+      "correctIndex": 1,
+      "explanation": "Index sur FK = bonne pratique.",
+      "code": null
+    },
+    {
+      "id": 121,
+      "module": 11,
+      "question": "CREATE OR REPLACE VIEW :",
+      "options": [
+        "Erreur si existe",
+        "Remplace vue existante",
+        "Cree nouvelle table",
+        "Drop table"
+      ],
+      "correctIndex": 1,
+      "explanation": "OR REPLACE met a jour définition.",
+      "code": null
+    },
+    {
+      "id": 122,
+      "module": 11,
+      "question": "Synonyme prive :",
+      "options": [
+        "Schema owner seulement",
+        "User courant",
+        "Tous schemas",
+        "PUBLIC"
+      ],
+      "correctIndex": 1,
+      "explanation": "Synonyme prive = user/schema.",
+      "code": null
+    },
+    {
+      "id": 123,
+      "module": 12,
+      "question": "USER_TABLES liste :",
+      "options": [
+        "Toutes tables BD",
+        "Tables du schema connecte",
+        "Tables DBA only",
+        "Vues seulement"
+      ],
+      "correctIndex": 1,
+      "explanation": "USER_* = schema courant.",
+      "code": null
+    },
+    {
+      "id": 124,
+      "module": 12,
+      "question": "ALL_TABLES vs USER_TABLES :",
+      "options": [
+        "Identiques",
+        "ALL inclut accèssibles",
+        "USER inclut tout",
+        "ALL = DBA"
+      ],
+      "correctIndex": 1,
+      "explanation": "ALL = objets avec privilége.",
+      "code": null
+    },
+    {
+      "id": 125,
+      "module": 12,
+      "question": "USER_TAB_COLUMNS contient :",
+      "options": [
+        "Données lignes",
+        "Metadonnées colonnes",
+        "Priviléges",
+        "Redo logs"
+      ],
+      "correctIndex": 1,
+      "explanation": "Colonnes des tables user.",
+      "code": null
+    },
+    {
+      "id": 126,
+      "module": 12,
+      "question": "TABLE_NAME dans dictionnaire sans quotes :",
+      "options": [
+        "minuscules",
+        "MAJUSCULES",
+        "mixte",
+        "NULL"
+      ],
+      "correctIndex": 1,
+      "explanation": "Noms non quotes = uppercase.",
+      "code": null
+    },
+    {
+      "id": 127,
+      "module": 12,
+      "question": "USER_CONSTRAINTS constraint_type R :",
+      "options": [
+        "Primary Key",
+        "Foreign Key",
+        "Unique",
+        "Check"
+      ],
+      "correctIndex": 1,
+      "explanation": "R = Referential (FK).",
+      "code": null
+    },
+    {
+      "id": 128,
+      "module": 12,
+      "question": "DBA_* vues necessitent :",
+      "options": [
+        "Aucun privilége",
+        "Role/priviléges DBA",
+        "CONNECT only",
+        "Synonyme"
+      ],
+      "correctIndex": 1,
+      "explanation": "DBA_* = vue administration.",
+      "code": null
+    },
+    {
+      "id": 129,
+      "module": 12,
+      "question": "USER_INDEXES montre :",
+      "options": [
+        "Toutes indexes BD",
+        "Indexes du schema user",
+        "FK seulement",
+        "Sequences"
+      ],
+      "correctIndex": 1,
+      "explanation": "Indexes du schema connecte.",
+      "code": null
+    },
+    {
+      "id": 130,
+      "module": 12,
+      "question": "USER_VIEWS :",
+      "options": [
+        "Tables",
+        "Vues du schema",
+        "Synonymes",
+        "Sequences"
+      ],
+      "correctIndex": 1,
+      "explanation": "Liste des vues.",
+      "code": null
+    },
+    {
+      "id": 131,
+      "module": 12,
+      "question": "USER_SEQUENCES :",
+      "options": [
+        "Tables",
+        "Sequences du schema",
+        "Jobs",
+        "Roles"
+      ],
+      "correctIndex": 1,
+      "explanation": "Metadonnées sequences.",
+      "code": null
+    },
+    {
+      "id": 132,
+      "module": 12,
+      "question": "USER_SYNONYMS :",
+      "options": [
+        "Synonymes accèssibles user",
+        "Tous publics",
+        "DBA only",
+        "FK"
+      ],
+      "correctIndex": 0,
+      "explanation": "Synonymes du user.",
+      "code": null
+    },
+    {
+      "id": 133,
+      "module": 13,
+      "question": "GRANT SELECT ON table TO user :",
+      "options": [
+        "Privilége objet",
+        "Privilége systeme",
+        "Role",
+        "DDL"
+      ],
+      "correctIndex": 0,
+      "explanation": "SELECT ON = privilége objet.",
+      "code": null
+    },
+    {
+      "id": 134,
+      "module": 13,
+      "question": "CREATE SESSION permet :",
+      "options": [
+        "Créer tables",
+        "Se connecter",
+        "DROP user",
+        "Backup"
+      ],
+      "correctIndex": 1,
+      "explanation": "CREATE SESSION = connexion.",
+      "code": null
+    },
+    {
+      "id": 135,
+      "module": 13,
+      "question": "WITH GRANT OPTION :",
+      "options": [
+        "Revoke auto",
+        "Permet re-déléguer privilége",
+        "Cree role",
+        "Commit"
+      ],
+      "correctIndex": 1,
+      "explanation": "Delegue le droit de GRANT.",
+      "code": null
+    },
+    {
+      "id": 136,
+      "module": 13,
+      "question": "REVOKE SELECT ON t FROM u CASCADE :",
+      "options": [
+        "Ignore dépendances",
+        "Revoke aussi priviléges délégués",
+        "Erreur",
+        "Drop table"
+      ],
+      "correctIndex": 1,
+      "explanation": "CASCADE retire délégations.",
+      "code": null
+    },
+    {
+      "id": 137,
+      "module": 13,
+      "question": "Privilége systeme exemple :",
+      "options": [
+        "SELECT ON emp",
+        "CREATE TABLE",
+        "INSERT ON dept",
+        "UPDATE col"
+      ],
+      "correctIndex": 1,
+      "explanation": "CREATE TABLE = systeme.",
+      "code": null
+    },
+    {
+      "id": 138,
+      "module": 13,
+      "question": "Role CONNECT (legacy) incluait :",
+      "options": [
+        "DBA",
+        "CREATE SESSION typiquement",
+        "DROP ANY TABLE",
+        "SYSDBA"
+      ],
+      "correctIndex": 1,
+      "explanation": "CONNECT = connexion basique.",
+      "code": null
+    },
+    {
+      "id": 139,
+      "module": 13,
+      "question": "Object privilége INSERT :",
+      "options": [
+        "Créer table",
+        "Insérer lignes table",
+        "Grant role",
+        "Alter system"
+      ],
+      "correctIndex": 1,
+      "explanation": "INSERT ON table.",
+      "code": null
+    },
+    {
+      "id": 140,
+      "module": 13,
+      "question": "REVOKE sans CASCADE :",
+      "options": [
+        "Revoke délégués aussi",
+        "Revoke seulement user direct",
+        "Erreur",
+        "Drop user"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sans CASCADE = direct seulement.",
+      "code": null
+    },
+    {
+      "id": 141,
+      "module": 13,
+      "question": "CREATE USER necessite typiquement :",
+      "options": [
+        "SELECT",
+        "Privilége CREATE USER (DBA)",
+        "Synonyme",
+        "Sequence"
+      ],
+      "correctIndex": 1,
+      "explanation": "Admin privilége pour CREATE USER.",
+      "code": null
+    },
+    {
+      "id": 142,
+      "module": 13,
+      "question": "GRANT role TO user :",
+      "options": [
+        "Accorde priviléges du role",
+        "Cree table",
+        "Revoke",
+        "Commit"
+      ],
+      "correctIndex": 0,
+      "explanation": "Role regroupe priviléges.",
+      "code": null
+    },
+    {
+      "id": 143,
+      "module": 14,
+      "question": "Ordre logique : WHERE avant :",
+      "options": [
+        "FROM",
+        "SELECT",
+        "GROUP BY",
+        "ORDER BY"
+      ],
+      "correctIndex": 2,
+      "explanation": "FROM->WHERE->GROUP BY->HAVING->SELECT->ORDER BY.",
+      "code": null
+    },
+    {
+      "id": 144,
+      "module": 14,
+      "question": "SELECT * FROM t WHERE ROWNUM <= 5 ORDER BY sal DESC :",
+      "options": [
+        "Top 5 salaires",
+        "5 lignes aléatoires triees",
+        "Erreur",
+        "Toutes lignes"
+      ],
+      "correctIndex": 1,
+      "explanation": "ROWNUM avant ORDER BY = mauvais top-N.",
+      "code": null
+    },
+    {
+      "id": 145,
+      "module": 14,
+      "question": "WHERE col = NULL retourne :",
+      "options": [
+        "Lignes NULL",
+        "Aucune ligne",
+        "Erreur syntaxe",
+        "Toutes lignes"
+      ],
+      "correctIndex": 1,
+      "explanation": "= NULL toujours UNKNOWN.",
+      "code": null
+    },
+    {
+      "id": 146,
+      "module": 14,
+      "question": "ROWNUM > 1 directement :",
+      "options": [
+        "Retourne lignes 2+",
+        "Retourne 0 lignes",
+        "Erreur",
+        "Toutes lignes"
+      ],
+      "correctIndex": 1,
+      "explanation": "ROWNUM > 1 impossible sans sous-requête.",
+      "code": null
+    },
+    {
+      "id": 147,
+      "module": 14,
+      "question": "FETCH FIRST 5 ROWS ONLY (12c+) :",
+      "options": [
+        "Syntaxe top-N moderne",
+        "Interdit",
+        "Remplace MERGE",
+        "DDL"
+      ],
+      "correctIndex": 0,
+      "explanation": "Alternative a ROWNUM pour top-N.",
+      "code": null
+    },
+    {
+      "id": 148,
+      "module": 14,
+      "question": "COUNT(*) vs COUNT(col) avec NULLs :",
+      "options": [
+        "Identiques",
+        "COUNT(*) inclut NULL lignes",
+        "COUNT(col) compte NULL",
+        "Erreur"
+      ],
+      "correctIndex": 1,
+      "explanation": "COUNT(*) compte lignes, COUNT(col) ignore NULL valeurs.",
+      "code": null
+    },
+    {
+      "id": 149,
+      "module": 14,
+      "question": "HAVING sans GROUP BY :",
+      "options": [
+        "Erreur toujours",
+        "Traite table entiere comme un groupe",
+        "Interdit Oracle",
+        "Remplace WHERE"
+      ],
+      "correctIndex": 1,
+      "explanation": "Agregat sans GROUP BY = 1 groupe.",
+      "code": null
+    },
+    {
+      "id": 150,
+      "module": 14,
+      "question": "DECODE vs CASE :",
+      "options": [
+        "DECODE plus flexible",
+        "CASE plus flexible",
+        "Identiques",
+        "DECODE standard SQL"
+      ],
+      "correctIndex": 1,
+      "explanation": "CASE = standard, plus flexible.",
+      "code": null
+    },
+    {
+      "id": 151,
+      "module": 14,
+      "question": "SYSDATE retourne :",
+      "options": [
+        "Date sans heure",
+        "Date et heure courante",
+        "Timestamp UTC",
+        "Nombre"
+      ],
+      "correctIndex": 1,
+      "explanation": "SYSDATE = date+heure serveur.",
+      "code": null
+    },
+    {
+      "id": 152,
+      "module": 14,
+      "question": "TO_DATE sans format mask :",
+      "options": [
+        "Toujours OK",
+        "Depend NLS, risque erreur",
+        "Interdit",
+        "Retourne SYSDATE"
+      ],
+      "correctIndex": 1,
+      "explanation": "Format explicite recommande.",
+      "code": null
+    },
+    {
+      "id": 153,
+      "module": 14,
+      "question": "MINUS ALL existe en Oracle ?",
+      "options": [
+        "Oui",
+        "Non standard Oracle",
+        "Identique MINUS",
+        "Requis"
+      ],
+      "correctIndex": 1,
+      "explanation": "Oracle a MINUS pas MINUS ALL standard.",
+      "code": null
+    },
+    {
+      "id": 154,
+      "module": 14,
+      "question": "SELECT DISTINCT applique avant ORDER BY ?",
+      "options": [
+        "Non",
+        "Oui logiquement",
+        "Apres ORDER BY",
+        "Remplace GROUP BY"
+      ],
+      "correctIndex": 1,
+      "explanation": "DISTINCT avant ORDER BY logiquement.",
+      "code": null
+    }
+  ]
+}
